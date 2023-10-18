@@ -28,7 +28,7 @@ public class Book {
 
 
     /**
-     * Book status: true - Available; false - Not available
+Book status: true - Available; false - Not available
      */
     private boolean status = true;
 
@@ -97,7 +97,10 @@ public class Book {
     public void setDemand(boolean status) {
         this.status = status;
     }
-
+    // add this to be able to see how many books have been borrowed on the library card
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
 
 
