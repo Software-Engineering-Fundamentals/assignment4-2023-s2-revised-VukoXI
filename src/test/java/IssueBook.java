@@ -41,7 +41,7 @@ import java.util.Date;
 
     
     @Test
-    public void issueBook_ThreeBooksBorrowed_Successfully() {
+    public void issueBook_BooksBorrowed_Successfully() {
         // Issue a few books to the library card
         for (int i = 1; i <= 3; i++) {
             Book book = new Book(i, "Book " + i, 0);
