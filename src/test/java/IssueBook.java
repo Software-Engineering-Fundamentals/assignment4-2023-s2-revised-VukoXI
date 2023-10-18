@@ -37,6 +37,9 @@ import java.util.Date;
         libraryCard = new LibraryCard(student, currentDate, futureDate, 1);
     }
 
+
+
+    
     @Test
     public void issueBook_ThreeBooksBorrowed_Successfully() {
         // Issue a few books to the library card
@@ -80,22 +83,6 @@ import java.util.Date;
         // Verify that the first issue is successful, but the second one fails
         assertTrue(firstIssue);
         assertFalse(secondIssue);
-    }
-
-    @Test
-    public void issueBook_FailsWithExpiredLibraryCard() {
-        // Set the library card's expiry date to the past
-        Date pastDate = new Date(libraryCard.getExpiryDate().getTime() - (1000L * 60 * 60 * 24 * 30)); // 30 days in the past
-        libraryCard.setExpiryDate(pastDate);
-
-        // Create a book
-        Book book = new Book(1, "Book 1", 0);
-
-        // Attempt to issue the book with an expired card
-        boolean result = libraryCard.issueBook(book);
-
-        // Verify that it fails due to an expired card
-        assertFalse(result);
     }
 
     @Test
@@ -153,5 +140,21 @@ import java.util.Date;
         assertEquals(15, lowDemandBook.days());
     }
 
+    
+    @Test
+    public void issueBook_FailsWithExpiredLibraryCard() {
+        // Set the library card's expiry date to the past
+        Date pastDate = new Date(System.currentTimeMillis() - (1000L * 60 * 60 * 24 * 30)); // 30 days in the past
+        libraryCard.setExpiryDate(pastDate);
+    
+        // Create a book
+        Book book = new Book(1, "Book 1", 0);
+    
+        // Attempt to issue the book with an expired card
+        boolean result = libraryCard.issueBook(book);
+    
+        // Verify that it fails due to an expired card
+        assertFalse(result);
+    }
  }
 
